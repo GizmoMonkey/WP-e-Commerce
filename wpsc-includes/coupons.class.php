@@ -368,7 +368,7 @@ class wpsc_coupons {
 			}
 		
 		} else if ($c['property'] == 'subtotal_amount'){
-			$subtotal = wpsc_cart_total(false);
+			$subtotal = wpsc_cart_subtotal(false);
 			switch($c['logic']) {
 				case 'equal'://Checks if the subtotal of products in the cart equals condition value
 				if ($subtotal == $c['value'])
