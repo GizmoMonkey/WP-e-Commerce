@@ -134,7 +134,7 @@ class wpec_taxes_controller {
       	if($exclusive)
 			$returnable = $price * ($tax_percentage / 100);
 		else{
-			$returnable = ($price / (100 + $tax_percentage) ) * $tax_percentage;
+			$returnable = $price * ($tax_percentage / 100);
 		}
 
       }// if
