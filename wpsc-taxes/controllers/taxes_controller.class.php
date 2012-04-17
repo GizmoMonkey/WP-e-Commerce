@@ -70,11 +70,13 @@ class wpec_taxes_controller {
 						$taxes = $this->wpec_taxes_calculate_included_tax( $cart_item );
 
 						$total_tax += $taxes['tax'];
+						print_r($taxes);
+						exit;
 					}
 					else
 					{
 						//run wpec_taxes_calculate_excluded_tax
-						$taxes = $this->wpec_taxes_calculate_excluded_tax( $cart_item, $tax_rate );
+						$taxes = $this->wpec_taxes_calculate_included_tax( $cart_item );
 
 						$total_tax += $taxes['tax'];
 					}// if
@@ -322,7 +324,7 @@ class wpec_taxes_controller {
    function wpec_taxes_display_tax_bands( $input_settings=array( ), $custom_tax_band=false ) {
    	  $returnable = '';
       //if taxes are included and not disabled continue else notify customer
-      if ( $this->wpec_taxes_isincluded() && $this->wpec_taxes->wpec_taxes_get_enabled() ) {
+      if ( $this->wpec_taxes->wpec_taxes_get_enabled() ) {
          //retrieve the bands and add the disabled value
          $tax_bands = $this->wpec_taxes->wpec_taxes_get_bands();
          if ( !empty( $tax_bands ) ) {
